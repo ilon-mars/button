@@ -31,10 +31,12 @@ jobs:
           cache: 'yarn'
 
       - name: Enable Corepack
-        run: corepack enable
+        run: |
+          corepack enable
+          corepack prepare yarn@4.13.0 --activate
 
-      - name: Use correct Yarn version
-        run: corepack prepare yarn@4.13.0 --activate
+      - name: Verify Yarn version
+        run: yarn --version
 
       - name: Install dependencies
         run: yarn install --immutable
