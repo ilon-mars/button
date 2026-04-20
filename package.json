@@ -2,22 +2,12 @@
   "name": "button",
   "version": "0.0.0",
   "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/button.js",
-      "require": "./dist/button.cjs"
-    }
-  },
-  "main": "./dist/button.cjs",
-  "module": "./dist/button.js",
-  "types": "./dist/button.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "release": "yarn test && yarn build && changelogen --release --push && yarn publish",
     "lint": "eslint . --fix",
     "prepare": "husky install"
   },
@@ -26,14 +16,11 @@
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
     "@types/node": "^22.19.17",
-    "camelcase": "^9.0.0",
-    "changelogen": "^0.6.2",
     "eslint": "^9.39.4",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
     "typescript": "^5.9.3",
-    "vite": "^7.3.2",
-    "vite-plugin-dts": "^4.5.4"
+    "vite": "^7.3.2"
   },
   "lint-staged": {
     "*.ts": "yarn run lint"
