@@ -1,6 +1,7 @@
 import type { Step } from '../const/steps'
 import { STEPS } from '../const/steps'
 import { preloadNextSteps } from './preloadNextSteps'
+import { preloadVideosOnStart } from './preloadVideoOnStart'
 
 interface StartGameParams {
   text: HTMLParagraphElement
@@ -39,6 +40,7 @@ export function startGame({
     refreshFsLightbox()
   }
 
+  preloadVideosOnStart()
   preloadNextSteps(counter)
 
   button.addEventListener('click', () => {
