@@ -270,6 +270,11 @@ export const STEPS: Record<number, Step> = {
   },
 
   41: {
+    text: 'ЖИТЬ В КАЙФ',
+    asset: null,
+  },
+
+  42: {
     text: '',
     asset: {
       type: 'img',
