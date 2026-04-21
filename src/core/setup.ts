@@ -1,6 +1,6 @@
 import { startGame } from './startGame'
 
-export const setup = () => {
+export function setup() {
   const app = document.querySelector('#app')
   const text = app?.querySelector('.text') as HTMLParagraphElement
   const button = app?.querySelector('.button') as HTMLButtonElement

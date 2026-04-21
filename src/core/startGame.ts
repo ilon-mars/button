@@ -1,20 +1,19 @@
-import { Step, STEPS } from '../const/steps';
+import type { Step } from '../const/steps'
+import { STEPS } from '../const/steps'
 
-type StartGameParams = {
-  text: HTMLParagraphElement,
-  button: HTMLButtonElement,
+interface StartGameParams {
+  text: HTMLParagraphElement
+  button: HTMLButtonElement
   asset: HTMLAnchorElement
 }
 
-export const startGame = (
-  {
-    text,
-    button,
-    asset
-  }: StartGameParams
-) => {
-  let counter = 0;
-  let currentAsset = asset;
+export function startGame({
+  text,
+  button,
+  asset,
+}: StartGameParams) {
+  let counter = 0
+  let currentAsset = asset
 
   const renderAsset = (step: Step) => {
     const newAsset = currentAsset.cloneNode(false) as HTMLAnchorElement
@@ -23,7 +22,9 @@ export const startGame = (
 
     currentAsset.dataset.fslightbox = ''
 
-    if (!step.asset) return
+    if (!step.asset) {
+      return
+    }
 
     currentAsset.href = step.asset.content
 
@@ -41,16 +42,18 @@ export const startGame = (
     counter++
 
     const step = STEPS[counter]
-    const stepsLength = Object.keys(STEPS).length;
+    const stepsLength = Object.keys(STEPS).length
 
-    if (!step) return
+    if (!step) {
+      return
+    }
 
-    text.textContent = step.text;
-    renderAsset(step);
+    text.textContent = step.text
+    renderAsset(step)
 
     if (counter === stepsLength) {
-      button.disabled = true;
-      button.style.display = 'none';
+      button.disabled = true
+      button.style.display = 'none'
     }
   })
 }
