@@ -13,11 +13,16 @@ function preloadAsset(step: Step) {
     img.src = step.asset.content
   }
 
-  // if (step.asset.type === 'video') {
-  //   const video = document.createElement('video')
-  //   video.src = step.asset.content
-  //   video.preload = 'metadata'
-  // }
+  if (step.asset.type === 'video') {
+    const video = document.createElement('video')
+    video.src = step.asset.content
+    video.preload = 'metadata'
+
+    if (step.asset.thumb) {
+      const img = new Image()
+      img.src = step.asset.thumb
+    }
+  }
 }
 
 export function preloadNextSteps(current: number) {

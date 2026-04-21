@@ -11,16 +11,28 @@ import image10 from '../assets/image-10.jpeg'
 import image11 from '../assets/image-11.jpeg'
 import image12 from '../assets/image-12.webp'
 import image13 from '../assets/image-13.jpg'
+import thumb from '../assets/thumb.jpg'
 import video1 from '../assets/video-1.mp4'
 import video2 from '../assets/video-2.mp4'
 import video3 from '../assets/video-3.mp4'
 
+interface BaseAsset {
+  type: 'img' | 'video'
+  content: string
+}
+
+interface ImgAsset extends BaseAsset {
+  type: 'img'
+}
+
+interface VideoAsset extends BaseAsset {
+  type: 'video'
+  thumb: string
+}
+
 export interface Step {
   text: string
-  asset: {
-    type: 'img' | 'video'
-    content: string
-  } | null
+  asset: ImgAsset | VideoAsset | null
 }
 
 export const STEPS: Record<number, Step> = {
@@ -107,6 +119,7 @@ export const STEPS: Record<number, Step> = {
     asset: {
       type: 'video',
       content: video1,
+      thumb,
     },
   },
 
@@ -204,6 +217,7 @@ export const STEPS: Record<number, Step> = {
     asset: {
       type: 'video',
       content: video2,
+      thumb,
     },
   },
 
@@ -212,6 +226,7 @@ export const STEPS: Record<number, Step> = {
     asset: {
       type: 'video',
       content: video3,
+      thumb,
     },
   },
 

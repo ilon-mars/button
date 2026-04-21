@@ -1,7 +1,6 @@
 import type { Step } from '../const/steps'
 import { STEPS } from '../const/steps'
 import { preloadNextSteps } from './preloadNextSteps'
-import { preloadVideosOnStart } from './preloadVideoOnStart'
 
 interface StartGameParams {
   text: HTMLParagraphElement
@@ -15,32 +14,26 @@ export function startGame({
   asset,
 }: StartGameParams) {
   let counter = 0
-  let currentAsset = asset
 
   const renderAsset = (step: Step) => {
-    const newAsset = currentAsset.cloneNode(false) as HTMLAnchorElement
-    currentAsset.replaceWith(newAsset)
-    currentAsset = newAsset
-
-    currentAsset.dataset.fslightbox = ''
+    asset.innerHTML = ''
 
     if (!step.asset) {
       return
     }
 
-    currentAsset.href = step.asset.content
+    asset.href = step.asset.content
+    asset.dataset.fslightbox = ''
 
-    const el = document.createElement(step.asset.type)
+    const image = document.createElement('img')
+    image.src = step.asset.type === 'img' ? step.asset.content : step.asset.thumb
 
-    el.src = step.asset.content
-
-    currentAsset.appendChild(el)
+    asset.appendChild(image)
 
     // @ts-ignore
     refreshFsLightbox()
   }
 
-  preloadVideosOnStart()
   preloadNextSteps(counter)
 
   button.addEventListener('click', () => {
