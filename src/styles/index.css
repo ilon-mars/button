@@ -38,6 +38,7 @@ body {
 }
 
 .button {
+  flex-shrink: 0;
   background: none repeat scroll 0 0 #d71e34;
   border-radius: 50%;
   box-shadow: 0 10px var(--button-shadow-color);
