@@ -11,9 +11,9 @@ import image10 from '../assets/image-10.jpeg'
 import image11 from '../assets/image-11.jpeg'
 import image12 from '../assets/image-12.webp'
 import image13 from '../assets/image-13.jpg'
-import video1 from '../assets/video-1.mp4'
-import video2 from '../assets/video-2.mp4'
-import video3 from '../assets/video-3.mp4'
+import video1 from '../assets/output-1.mp4'
+import video2 from '../assets/output-2.mp4'
+import video3 from '../assets/output-3.mp4'
 
 export interface Step {
   text: string
