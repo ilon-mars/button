@@ -1,5 +1,6 @@
 import type { Step } from '../const/steps'
 import { STEPS } from '../const/steps'
+import { preloadNextSteps } from './preloadNextSteps'
 
 interface StartGameParams {
   text: HTMLParagraphElement
@@ -38,6 +39,8 @@ export function startGame({
     refreshFsLightbox()
   }
 
+  preloadNextSteps(counter)
+
   button.addEventListener('click', () => {
     counter++
 
@@ -50,6 +53,8 @@ export function startGame({
 
     text.textContent = step.text
     renderAsset(step)
+
+    preloadNextSteps(counter)
 
     if (counter === stepsLength) {
       button.disabled = true
